@@ -1,0 +1,16 @@
+{
+    "en": {
+        "timeTitle":"Hours",
+        "lunch":"Lunch",
+        "dinner":"Dinner",
+        "button":"For Reservations Please Make a Call",
+        "warning":"*To make sure all the customers have enough personal space, we are admitting limited number of guests. Please make reservation ahead of time. In order to serve Course A, B and C, Please kindly make reservation by the day before your visit. For your timely information, such as temporary close and private event, please refer to Socials."
+    },
+    "ja": {
+        "timeTitle":"営業時間",
+        "lunch":"ランチタイム",
+        "dinner":"ディナータイム",
+        "button":"ご予約はお電話でお願い致します。",
+        "warning":"※ 座席の間隔を空けて営業しておりますので、お席に限りがございます。なるべくご予約くださいますようお願いいたします。 コース料理は前日までのご予約をお願い致します。 なお、コースをお召し上がりになることが難しい 年齢のお子様のご利用はご遠慮願っております。貸し切りや臨時休業の情報についてはフェイスブックページにてお知らせしております。ご予約の前にご確認ください。"
+    }
+}

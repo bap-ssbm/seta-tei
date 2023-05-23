@@ -1,0 +1,12 @@
+{
+    "en": {
+        "please":"For Reservations or any other inquiries, please make a call.",
+        "warning":"Updates such as Being Rented out or Temporary Closure etc. will be announced on our socials (Instagram and Facebook).",
+        "warning2":"Please check it before making reservation."
+    },
+    "ja": {
+        "please":"ご予約はお電話でお願い致します。",
+        "warning":"貸し切りや臨時休業の情報についてはフェイスブックページにてお知らせしております。",
+        "warning2" : "ご予約の前にご確認ください。"
+    }
+}

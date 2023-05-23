@@ -1,0 +1,20 @@
+{
+    "en": {
+        "timeTitle":"Hours",
+        "lunch":"Lunch",
+        "dinner":"Dinner",
+        "rest":"Closed On",
+        "lunchDates":"Wednesday, Friday",
+        "dinnerDates":"Monday - Thursday",
+        "reservation" : "Phone"
+    },
+    "ja": {
+        "timeTitle":"営業時間",
+        "lunch":"ランチタイム",
+        "dinner":"ディナータイム",
+        "rest":"休日",
+        "lunchDates":"水曜日、金曜日",
+        "dinnerDates":"月曜日～木曜日",
+        "reservation" : "ご予約・お問い合わせは"
+    }
+}
