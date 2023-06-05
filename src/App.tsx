@@ -9,7 +9,7 @@ import Reservation from './Reservation/Reservation'
 import LanguageBtn from './components/ui/navbar/LanguageBtn'
 import Concept from './concept/Concept'
 import MenuPage from './Menu/MenuPage'
-
+import { Analytics } from '@vercel/analytics/react';
 WebFont.load({
   custom: {
     families: ['hannari'],
@@ -30,6 +30,7 @@ const App = () => {
           <Route path='/access' element={<Access />} />
         </Routes>
         <Footer />
+        <Analytics />
       </div>
     </div>
   )}
