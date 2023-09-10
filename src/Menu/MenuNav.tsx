@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next'
 const MenuNav= ({ }) => {
     const {t} = useTranslation()
     return (
-        <div className='border-b  md:border-r md:border-b-0 pr-4 md:pr-20 py-10 md:pt-20'>
+        <div className='border-b  md:border-r md:border-b-0 pr-4 md:pr-20 py-10 md:pt-20 whitespace-nowrap'>
             <ul className='flex flex-col gap-4 md:gap-10 md:sticky md:top-36 h-fit text-center items-center md:items-start md:text-start'>
                 <li>
                     <a className='hover:underline' href='#lunch'>

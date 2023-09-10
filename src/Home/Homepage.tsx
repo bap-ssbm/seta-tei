@@ -1,4 +1,6 @@
 import Appeal from './components/appeal/Appeal'
+import Showcase from '../concept/components/Showcase'
+
 import HeroCarousel from './components/hero/HeroCarousel'
 export default function Homeage() {
   return (

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Appeal = ({ }) => {
     const { t} = useTranslation();
     return (
-        <div className='w-full md:hidden flex flex-col gap-10 mt-14 items-center'>
+        <div className='w-full flex flex-col gap-12 mt-14 mb-10 items-center'>
             <Link to='/menu' className='w-full max-w-[500px]'>
                 <Button className='w-full'>
                     {t('homePage.appeal.menu')}
