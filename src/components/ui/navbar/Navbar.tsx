@@ -17,7 +17,7 @@ const Navbar = ({ }) => {
                 <Call />
             </div>
             <Link to='/' className='max-w-[60%]'>
-                <img src='/images/logo.png' />
+                <img src='/images/logo.png' alt='hayama setatei' />
             </Link>
             <NavMenu />
             <Hamburg openMenu={openMenu} setOpenMenu={setOpenMenu} />

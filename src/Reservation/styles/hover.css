@@ -1,0 +1,23 @@
+.telephone {
+    position: relative;
+    transition-duration: 1;
+    transition-property: width;
+}
+
+.telephone::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 1px; 
+    scale: 0;
+    --tw-text-opacity: 1;
+    background-color: rgb(30 58 138 / var(--tw-text-opacity));
+    z-index: 10;
+    transition: all .4s ease-in-out;
+}
+
+.telephone:hover::after {
+    scale: 1;
+}
+

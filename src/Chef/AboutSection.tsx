@@ -18,7 +18,7 @@ const AboutSection = () => {
                 animate={{opacity:1,  y:0 }}
                 transition={{type:'tween', duration:0.6, ease:'easeInOut' , delay:0.4}}
                 className='mr-10 lg:mr-0 p-5 h-fit bg-light-blue lg:w-[34%] max-w-[350px] '>
-                    <img className='translate-x-10 w-full' src='/images/Rituko Seta - Copy.jpg' alt='' height={500} width={500} />
+                    <img className='translate-x-10 w-full' src='/images/Rituko Seta - Copy.jpg' alt='seta chef 瀬田シェフ' height={500} width={500} />
                 </motion.div>
                 <AboutDesc />
             </div>

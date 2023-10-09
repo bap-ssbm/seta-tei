@@ -20,7 +20,7 @@ const Appeal = () => {
                     </p>
                 </div>
                 <div className='bg-blue-900'>
-                    <img className='translate-x-3 translate-y-3  border border-black' src='/images/hayamaImg.jpg' alt='' height={300} width={300} />
+                    <img className='translate-x-3 translate-y-3  border border-black' src='/images/hayamaImg.jpg' alt='mount fuji' height={300} width={300} />
                 </div>
             </div>
             <div className='flex gap-10  flex-col text-center  items-center  md:w-[30%] lg:max-w-[300px]'>
@@ -34,7 +34,7 @@ const Appeal = () => {
                     </p>
                 </div>
                 <div className='bg-blue-900'>
-                    <img className='translate-x-3 translate-y-3  border border-black' src='/images/vegetables.jpg' alt='' height={300} width={300} />
+                    <img className='translate-x-3 translate-y-3  border border-black' src='/images/vegetables.jpg' alt='hayama vegetables' height={300} width={300} />
                 </div>
             </div>
             <div className='flex gap-10  flex-col text-center  items-center md:w-[32%] '>
@@ -49,7 +49,7 @@ const Appeal = () => {
 
                 </div>
                 <div className='bg-blue-900'>
-                    <img className='translate-x-3 translate-y-3 border border-black' src='/images/foodimg.jpg' alt='' height={300} width={300} />
+                    <img className='translate-x-3 translate-y-3 border border-black' src='/images/foodimg.jpg' alt='image of ala carte' height={300} width={300} />
                 </div>
             </div>
         </motion.div>

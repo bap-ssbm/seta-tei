@@ -1,7 +1,7 @@
 {
     "en": {
         "addressTitle":"Address:",
-       "address" :"541-19 Horiuchi Hayama-machi Miuragun, Kanagawa 240-0112",
+       "address" :"541-19 Horiuchi Hayama-machi Miuragun, Kanagawa",
        "busTitle":"By Public Transportation",
        "busDesc":"Take Keikyu Bus [逗11] or [逗12] from JR Zushi Sta. for 13 mins. Get off at Motomachi Bus Stop, from which 3 mins walk",
        "carTitle":"By Car",
@@ -11,7 +11,7 @@
     },
     "ja": {
         "addressTitle":"住所：",
-        "address" :"〒240-0112 神奈川県三浦郡葉山町堀内541-19",
+        "address" :"神奈川県三浦郡葉山町堀内541-19",
         "busTitle":"公共交通機関でお越しの方",
        "busDesc":"JR逗子駅 (横須賀線) から京急バス【逗11】【逗12】系統にて約13分、元町バス停下車、徒歩3分 京急新逗子駅から京急バス 【逗11】【逗12】系統にて約9分、元町バス停下車、徒歩3分",
        "carTitle":"お車でお越しの方",

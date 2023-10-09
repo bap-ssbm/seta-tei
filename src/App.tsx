@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import WebFont from 'webfontloader';
 import Homeage from './Home/Homepage'
 import Navbar from './components/ui/navbar/Navbar'
@@ -28,6 +28,7 @@ const App = () => {
           <Route path='/menu' element={<MenuPage />} />
           <Route path='/reserve' element={<Reservation />} />
           <Route path='/access' element={<Access />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
         <Footer />
         <Analytics />

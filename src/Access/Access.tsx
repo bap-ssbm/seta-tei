@@ -11,7 +11,7 @@ const Access = ({ }) => {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.7 }}
       >
-        {i18n.language === "ja" ? <img height={500} width={1000} alt='' src='/images/AO_Map.png' /> : <img height={500} width={1000} alt='' src='/images/AO_Map_en.png' />}
+        {i18n.language === "ja" ? <img height={500} width={1000} alt='地図' src='/images/AO_Map.png' /> : <img height={500} width={1000} alt='map' src='/images/AO_Map_en.png' />}
       </motion.div>
       <motion.div
         initial={{ opacity: 0, y:10 }}
