@@ -1,0 +1,10 @@
+{
+    "en": {
+        "menu" : "Look At Menu",
+        "reservation" : "Make A Reservation"
+    },
+    "ja": {
+        "menu" : "メニューを見る",
+        "reservation" : "予約を取る"
+    }
+}

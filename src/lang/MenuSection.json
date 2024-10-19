@@ -1,0 +1,28 @@
+{
+    "en": {
+        "concept": "At HAYAMA Seta-tei,",
+        "concept2": "we serve local vegetable and seafood in Franco Japonese, French + Japanese fusion style. ",
+        "concept3": "Instead of butter and cream, we utilize Dashi, Soy sauce, Miso and Sesami.",
+        "concept4": "Quiet and relaxed atmosphere, enjoy the Cuisine that is gentle on your body and soul.",
+        "hayamaTitle": "Hayama: the location",
+        "hayamaDesc": "HAYAMA Seta-tei is located in Horiuchi district in Hayama. 5 minutes walk from the Morito Beach. On a clear day, enjoy the view of Mt. Fuji, compares to none",
+        "vegetableTitle": "Generous use of Miura Vegetable",
+        "vegieDesc": "Serving dishes with plenty of vegetable, mainly produced locally in Miura. Very easy on your body so that you can have it everyday",
+        "fishTitle": "Fresh Seafood with Gentle Japanese flavor",
+        "fishDesc": "Fresh seafood served with special house sauce. Enjoy the Cuisine with French-Japanese fusion style.",
+        "button": "See The Menu"
+    },
+    "ja": {
+        "concept": "『HAYAMA せた亭』では、",
+        "concept2": "地物の野菜や地魚をたっぷりと使った、和食のようなフレンチをご提供。",
+        "concept3": "バターや生クリームなどの油脂分ではなく、鰹出汁、醤油、味噌、胡麻などを使った料理です。",
+        "concept4": "ゆったりとしたくつろぎの空間で、心と身体にやさしい味をお楽しみください。",
+        "hayamaTitle": "葉山というロケーション",
+        "hayamaDesc": "HAYAMAせた亭は葉山町堀内にあります。浜辺まで歩いて5分の距離。美しい富士山にのぞむ比類ない非日常をお楽しみください。",
+        "vegetableTitle": "三浦野菜をふんだんに使用",
+        "vegieDesc": "新鮮な三浦野菜を中心に、 たくさんの野菜を摂っていただけるメニュー。 毎日でも食べられる体に優しい味わいです。",
+        "fishTitle": "新鮮な魚介と和の優しい味わい",
+        "fishDesc": "新鮮な魚介類を特製レムドレソースで。 フレンチと和食を融合させたキュイジーヌフランコジャポネーズをお楽しみいただけます。",
+        "button": "メニューを見る"
+    }
+}

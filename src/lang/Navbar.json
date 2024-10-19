@@ -1,0 +1,18 @@
+{
+    "en": {
+       "home" :"Home",
+       "about" :"Chef",
+       "menu" : "Menu",
+       "reserve":"Reservation",
+       "access": "Access",
+       "concept":"Concept"
+    },
+    "ja": {
+        "home" :"ホーム",
+        "about" :"シェフ",
+        "menu" : "メニュー",
+        "reserve":"予約する",
+        "access": "アクセス",
+        "concept":"コンセプト"
+    }
+}

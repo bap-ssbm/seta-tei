@@ -1,0 +1,22 @@
+{
+    "en": {
+        "addressTitle":"Address:",
+       "address" :"541-19 Horiuchi Hayama-machi Miuragun, Kanagawa",
+       "busTitle":"By Public Transportation",
+       "busDesc":"Take Keikyu Bus [逗11] or [逗12] from JR Zushi Sta. for 13 mins. Get off at Motomachi Bus Stop, from there, it is a 3 min walk",
+       "carTitle":"By Car",
+       "carDesc" :"Yokohama-Yokosuka Express way to Zuyo Shindo, Route 134 and 311 Prefectural Road.  11 mins drive from the exit of Zuyo Shindo",
+       "car1":"*There are a parking for 2 cars (priority for reservation customers)",
+       "car2":"*when our parking is full, please use public parking (toll)"
+    },
+    "ja": {
+        "addressTitle":"住所：",
+        "address" :"神奈川県三浦郡葉山町堀内541-19",
+        "busTitle":"公共交通機関でお越しの方",
+       "busDesc":"JR逗子駅 (横須賀線) から京急バス【逗11】【逗12】系統にて約13分、元町バス停下車、徒歩3分 京急逗子・葉山駅から京急バス 【逗11】【逗12】系統にて約9分、元町バス停下車、徒歩3分",
+       "carTitle":"お車でお越しの方",
+       "carDesc" :"横浜横須賀道路〜逗葉新道、県道311号線、国道134号線を経て、逗葉新道終点出口より約11分",
+       "car1":"※２台分の駐車スペースを用意しております。(ご予約のお客様を優先させていただきます）",
+       "car2":"※満車の際は、近隣の公共駐車場（有料）をご利用ください。"
+    }
+}
