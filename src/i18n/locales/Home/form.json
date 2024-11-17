@@ -33,8 +33,8 @@
             "name": "Other.",
             "placeholder": "Notices for any allergies or for birthdays and anniversaries"
         },
-        "reserveNotice" : "※ Please make reservations using this form by 6:00 p.m. on the day before your desired date.",
-        "reserveNotice2" : "※ Please note that your reservation will not be confirmed until you receive a reservation confirmation email from us.",
+        "reserveNotice" : "*Please make reservations using this form by 6:00 p.m. on the day before your desired date.",
+        "reserveNotice2" : "*Please note that your reservation will not be confirmed until you receive a reservation confirmation email from us.",
         "reserveBtn" : "Make Reservation",
          "sentMessage": "Reservation message sent.",
          "errorMessage": "Error try again."
