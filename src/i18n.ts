@@ -11,6 +11,7 @@ import footer from './i18n/locales/Footer.json'
 import realmenu from './i18n/locales/Menu.json'
 import reservationPage from './i18n/locales/ReservationPage.json'
 import appeal from './i18n/locales/Home/Appeal.json'
+import form  from './i18n/locales/Home/form.json' 
 
 i18n
     // detect user language
@@ -33,6 +34,7 @@ i18n
                         about: { ...about.en },
                         hero:{...hero.en},
                         reservation:{...reservation.en},
+                        form:{...form.en},
                         menu:{...menu.en},
                         access:{...access.en},
                         appeal:{...appeal.en}
@@ -57,6 +59,7 @@ i18n
                         about: { ...about.ja },
                         hero:{...hero.ja},
                         reservation:{...reservation.ja},
+                        form:{...form.ja},
                         menu:{...menu.ja},
                         access:{...access.ja},
                         appeal:{...appeal.ja}

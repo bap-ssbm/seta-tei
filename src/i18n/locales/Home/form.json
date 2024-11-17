@@ -1,0 +1,82 @@
+{
+    "en" : {
+        "name": {
+            "name": "Name",
+            "placeholder": "John Doe"
+        },
+        "email": {
+            "name": "Email",
+            "placeholder": "example@gmail.com"
+        },
+        "tel": {
+            "name": "Phone",
+            "placeholder": "000-0000-0000"
+        },
+        "time": {
+            "name": "Date and Time",
+            "placeholder": ""
+        },
+        "num": {
+            "name": "People",
+            "placeholder": ""
+        },
+        "parking": {
+            "name": "Parking",
+            "option1": "no parking",
+            "option2": "parking"
+        },
+        "menu": {
+            "name": "Menu Requests, if any",
+            "placeholder": "1 A course with meat, and 2 B course with fish."
+        },
+        "other": {
+            "name": "Other.",
+            "placeholder": "Notices for any allergies or for birthdays and anniversaries"
+        },
+        "reserveNotice" : "※ Please make reservations using this form by 6:00 p.m. on the day before your desired date.",
+        "reserveNotice2" : "※ Please note that your reservation will not be confirmed until you receive a reservation confirmation email from us.",
+        "reserveBtn" : "Make Reservation",
+         "sentMessage": "Reservation message sent.",
+         "errorMessage": "Error try again."
+    },
+    "ja": {
+        "name": {
+                "name": "名前",
+                "placeholder": "例：山田太郎"
+            },
+            "email": {
+                "name": "メール",
+                "placeholder": "例：example@gmail.com"
+            },
+            "tel": {
+                "name": "電話番号",
+                "placeholder": "例：000-0000-0000"
+            },
+            "time": {
+                "name": "ご来店要望日時",
+                "placeholder": ""
+            },
+            "num": {
+                "name": "ご来店人数",
+                "placeholder": ""
+            },
+            "parking": {
+                "name": "駐車場ご利用",
+                "option1": "無",
+                "option2": "有"
+            },
+            "menu": {
+                "name": "要望メニュー：当店ウェブご参照の上、ご希望のメニューが既にお決まりでしたらお知らせください",
+                "placeholder": "例：Aコース 肉　Bコース 魚"
+            },
+            "other": {
+                "name": "その他ご要望",
+                "placeholder": "例：メロンのアレルギー、 お誕生日や記念日などのお知らせ"
+            },
+            "reserveNotice" : "※この予約フォームからのご予約はご要望日の前日18時までにお願いします",
+            "reserveNotice2" : "※ご予約は当店からの予約確認メールが送られるまでは確定ではありません、ご了承ください。",
+            "reserveBtn" : "予約する",
+            "sentMessage": "メールが送信されました",
+             "errorMessage": "エラー"
+    }
+}
