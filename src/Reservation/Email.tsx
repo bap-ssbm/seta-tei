@@ -23,6 +23,35 @@ const Email: React.FC = () => {
     const [loading, setLoading] = useState<boolean>(false)
 
    
+    const filterPassedTime = (time: Date) => {
+        const selectedDate = startDate || new Date();
+        const day = selectedDate.getDay(); // Get the day of the week (0 = Sunday, 1 = Monday, ..., 6 = Saturday)
+        const hour = new Date(time).getHours();
+        const minute = new Date(time).getMinutes();
+        if (day === 1 || day === 2) {
+            return (
+                (hour === 11 && minute >= 30) || // 11:30–11:59
+                (hour === 12) ||                 // 12:00–12:59
+                (hour === 13 && minute <= 30)    // 13:00–13:30
+            );
+        } else {
+            return (
+                (hour === 11 && minute >= 30) || // 11:30–11:59
+                (hour === 12) ||                 // 12:00–12:59
+                (hour === 13 && minute <= 30) || // 13:00–13:30
+                (hour === 17 && minute >= 30) || // 17:30–17:59
+                (hour === 18) ||                 // 18:00–18:59
+                (hour === 19 && minute <= 30)    // 19:00–19:30
+            );
+        }
+    
+      };
+
+      const isOff = (date: Date) => {
+        const day = date.getDay();
+        const today = new Date();
+        return date >= today && day !== 3 && day !== 4;
+      };
   
     const catchName = (e : React.ChangeEvent<HTMLInputElement>)=>{
         setName(e.target.value)
@@ -98,6 +127,8 @@ const Email: React.FC = () => {
                             className='border px-2 py-2 block'
                             selected={startDate} 
                             dateFormat="Pp"
+                            filterDate={isOff}
+                            filterTime={filterPassedTime}
                             onChange={(date: Date | null) => setStartDate(date)} 
                     />
                     
