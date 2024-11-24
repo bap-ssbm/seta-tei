@@ -119,7 +119,7 @@ const Email: React.FC = () => {
                     <label className={classes.label}>{t('homePage.form.tel.name')}</label>
                     <input onChange={catchTel} className='w-full block border px-2 py-2' type="tel" placeholder={t('homePage.form.tel.placeholder') + ''}  name="tel" />
                 </div>
-                <div>
+                <div className=''>
                     <label className={classes.label}>{t('homePage.form.time.name')}</label>
                     <DatePicker 
                             name='date'
@@ -131,6 +131,7 @@ const Email: React.FC = () => {
                             filterTime={filterPassedTime}
                             onChange={(date) => setStartDate(date)}
                             timeFormat="HH:mm"
+                             popperPlacement="bottom-end"
                     />
                     
                 </div>
