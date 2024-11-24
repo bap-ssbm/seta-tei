@@ -126,10 +126,11 @@ const Email: React.FC = () => {
                             showTimeSelect
                             className='border px-2 py-2 block'
                             selected={startDate} 
-                            dateFormat="Pp"
+                            dateFormat="yyyy/MM/dd HH:mm"
                             filterDate={isOff}
                             filterTime={filterPassedTime}
-                            onChange={(date: Date | null) => setStartDate(date)} 
+                            onChange={(date) => setStartDate(date)}
+                            timeFormat="HH:mm"
                     />
                     
                 </div>
