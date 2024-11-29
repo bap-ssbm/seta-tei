@@ -9,9 +9,9 @@ const Reservation = ({ }) => {
             <Schedule />
             <hr className='border-dashed w-full' />
             <Email/>
+            <hr className='border-dashed w-full' />
             <Call />
             <Socials />
-            
         </div>
     )
 }

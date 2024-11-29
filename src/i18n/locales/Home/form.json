@@ -1,5 +1,6 @@
 {
     "en" : {
+        "ttl": "Reservation Form",
         "name": {
             "name": "Name",
             "placeholder": "John Doe"
@@ -40,6 +41,7 @@
          "errorMessage": "Error try again."
     },
     "ja": {
+        "ttl": "Reservation Form",
         "name": {
                 "name": "名前",
                 "placeholder": "例：山田太郎"

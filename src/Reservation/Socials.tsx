@@ -12,11 +12,11 @@ const Socials= ({ }) => {
             <div>
                 {t('homePage.reservation.warning')}
             </div>
-            <div className='flex gap-10 justify-center mt-4'>
-                <a href='https://www.instagram.com/hayama_setatei/' className='flex justify-center items-center gap-3 px-4 hover:underline'>
+            <div className='flex gap-5 justify-center mt-4'>
+                <a href='https://www.instagram.com/hayama_setatei/' className='flex justify-center text-lg items-center gap-3 px-4 hover:underline'>
                     <BsInstagram className='inline-block' /> <span>Instagram</span>
                 </a>
-                <a href='https://www.facebook.com/hayamasetatei/' className='flex justify-center items-center gap-3 px-4 hover:underline'>
+                <a href='https://www.facebook.com/hayamasetatei/' className='flex justify-center text-lg items-center gap-3 px-4 hover:underline'>
                     <BsFacebook className='inline-block' /><div className='inline-block'>Facebook</div>
                 </a>
             </div>

@@ -103,6 +103,9 @@ const Email: React.FC = () => {
     return (
         
         <form className='flex flex-col w-full gap-5' ref={form} onSubmit={sendEmail}>
+            <h3 className='text-[23px] italic tracking-[2px]'>
+                Online Reservation
+            </h3>
             <div className='w-full'>
                 <label className={classes.label}>{t('homePage.form.name.name')}</label>
                 <input required onChange={catchName} className='w-full border block px-2 py-2' type="text" placeholder={t('homePage.form.name.placeholder') + ''} name="name" />
@@ -159,7 +162,7 @@ const Email: React.FC = () => {
             <p className=''>
             {t('homePage.form.reserveNotice')}<br/>{t('homePage.form.reserveNotice2')}
             </p>
-            <button className={'w-full flex gap-2 items-center justify-center bg-blue-950 text-white py-4 hover:opacity-60 duration-300' + (loading?' pointer-events-none':'')}>
+            <button className={'w-full flex gap-2 items-center text-lg justify-center bg-blue-950 text-white py-3 hover:opacity-60 duration-300' + (loading?' pointer-events-none':'')}>
             {loading ? (<BiLoaderAlt className='animate-spin' />) : t('homePage.form.reserveBtn')}
             </button>
             {(sent != 'notSent')&&
