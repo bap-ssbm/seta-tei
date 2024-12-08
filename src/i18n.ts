@@ -7,6 +7,7 @@ import reservation from './i18n/locales/Home/Reservation.json'
 import menu from './i18n/locales/Home/MenuSection.json'
 import access from './i18n/locales/Home/Access.json'
 import navbar from './i18n/locales/Navbar.json'
+import notice from './i18n/locales/Notice.json'
 import footer from './i18n/locales/Footer.json'
 import realmenu from './i18n/locales/Menu.json'
 import reservationPage from './i18n/locales/ReservationPage.json'
@@ -48,6 +49,9 @@ i18n
                     menu:{
                         ...realmenu.en
                     },
+                    notice:{
+                        ...notice.en
+                    },
                     reservationPage:{
                         ...reservationPage.en
                     }
@@ -72,6 +76,9 @@ i18n
                     },
                     menu:{
                         ...realmenu.ja
+                    },
+                    notice:{
+                        ...notice.ja
                     },
                     reservationPage:{
                         ...reservationPage.ja

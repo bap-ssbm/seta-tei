@@ -50,8 +50,22 @@ const Email: React.FC = () => {
       const isOff = (date: Date) => {
         const day = date.getDay();
         const today = new Date();
-        return date >= today && day !== 3 && day !== 4;
-      };
+        today.setHours(0, 0, 0, 0); // Reset time to midnight for comparison
+    
+        const startExclusion = new Date(today.getFullYear(), 11, 26); // December 26 of this year
+        const endExclusion = new Date(today.getFullYear() + 1, 0, 5); // January 5 of next year
+    
+        // Allow only dates that:
+        // 1. Are today or in the future
+        // 2. Are not Wednesday (3) or Thursday (4)
+        // 3. Are not within the exclusion range
+        return (
+            date >= today &&
+            day !== 3 &&
+            day !== 4 &&
+            !(date >= startExclusion && date <= endExclusion)
+        );
+    };
   
     const catchName = (e : React.ChangeEvent<HTMLInputElement>)=>{
         setName(e.target.value)
