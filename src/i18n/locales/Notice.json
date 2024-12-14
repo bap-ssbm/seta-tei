@@ -1,8 +1,10 @@
 {
     "en": {
-       "txt" :"Notice of Holiday: Business will close for the year from December 26th til January 6th."
+       "txt" :"Notice of Holiday: Business will close for the year from December 26th til January 6th.",
+       "menu": "We regret to inform you that due to rising product costs, we are planning a price adjustment of approximately 15-20% starting January 2025. We kindly ask for your understanding."
     },
     "ja": {
-        "txt" :"年末年始休業のお知らせ：年内の営業は12月25日迄、新年は1月6日より営業致します"
+        "txt" :"年末年始休業のお知らせ：年内の営業は12月25日迄、新年は1月6日より営業致します",
+        "menu": "申し訳ありませんが、原材料高騰の為、2025年1月から15-20%程度の価格改定を予定しております。ご了承下さい。"
     }
 }
