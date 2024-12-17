@@ -26,28 +26,48 @@ const Email: React.FC = () => {
     const filterPassedTime = (time: Date) => {
         const selectedDate = startDate || new Date();
         const day = selectedDate.getDay(); // Get the day of the week (0 = Sunday, 1 = Monday, ..., 6 = Saturday)
+        const date = selectedDate.getDate(); // Get the day of the month
+        const month = selectedDate.getMonth(); // Get the month (0 = January, ..., 11 = December)
         const hour = new Date(time).getHours();
         const minute = new Date(time).getMinutes();
+    
+        // Special dates: December 23, 24, and 25
+        const isSpecialDate = month === 11 && (date === 23 || date === 24 || date === 25);
+    
+        if (isSpecialDate) {
+            return (
+                (hour === 11 && minute >= 30) || // 11:30–11:59 (Lunch start)
+                (hour === 12) ||                 // 12:00–12:59
+                (hour === 13 && minute <= 30) || // 13:00–13:30
+                (hour === 17 && minute >= 30) || // 17:30–17:59 (Dinner start)
+                (hour === 18) ||                 // 18:00–18:59
+                (hour === 19 && minute <= 30)    // 19:00–19:30
+            );
+        }
+    
+        // Regular Monday and Tuesday logic (lunch only)
         if (day === 1 || day === 2) {
             return (
                 (hour === 11 && minute >= 30) || // 11:30–11:59
                 (hour === 12) ||                 // 12:00–12:59
                 (hour === 13 && minute <= 30)    // 13:00–13:30
             );
-        } else {
-            return (
-                (hour === 11 && minute >= 30) || // 11:30–11:59
-                (hour === 12) ||                 // 12:00–12:59
-                (hour === 13 && minute <= 30) || // 13:00–13:30
-                (hour === 17 && minute >= 30) || // 17:30–17:59
-                (hour === 18) ||                 // 18:00–18:59
-                (hour === 19 && minute <= 30)    // 19:00–19:30
-            );
         }
     
-      };
+        // Regular logic for all other dates (lunch and dinner)
+        return (
+            (hour === 11 && minute >= 30) || // 11:30–11:59
+            (hour === 12) ||                 // 12:00–12:59
+            (hour === 13 && minute <= 30) || // 13:00–13:30
+            (hour === 17 && minute >= 30) || // 17:30–17:59
+            (hour === 18) ||                 // 18:00–18:59
+            (hour === 19 && minute <= 30)    // 19:00–19:30
+        );
+    };
+    
+    
 
-      const isOff = (date: Date) => {
+    const isOff = (date: Date) => {
         const day = date.getDay();
         const today = new Date();
         today.setHours(0, 0, 0, 0); // Reset time to midnight for comparison
@@ -55,17 +75,23 @@ const Email: React.FC = () => {
         const startExclusion = new Date(today.getFullYear(), 11, 26); // December 26 of this year
         const endExclusion = new Date(today.getFullYear() + 1, 0, 5); // January 5 of next year
     
+        const isDecember25 =
+            date.getFullYear() === today.getFullYear() &&
+            date.getMonth() === 11 && // December
+            date.getDate() === 25;
+    
         // Allow only dates that:
         // 1. Are today or in the future
-        // 2. Are not Wednesday (3) or Thursday (4)
-        // 3. Are not within the exclusion range
+        // 2. Are not Wednesday (3) or Thursday (4), except December 25
+        // 3. Are not within the exclusion range, except December 25
         return (
             date >= today &&
-            day !== 3 &&
-            day !== 4 &&
-            !(date >= startExclusion && date <= endExclusion)
+            (!isDecember25 && day !== 3 && day !== 4) || // Allow December 25 regardless of day
+            isDecember25 // Explicitly allow December 25
         );
     };
+    
+    
   
     const catchName = (e : React.ChangeEvent<HTMLInputElement>)=>{
         setName(e.target.value)
