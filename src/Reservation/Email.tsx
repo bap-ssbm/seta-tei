@@ -72,8 +72,8 @@ const Email: React.FC = () => {
         const today = new Date();
         today.setHours(0, 0, 0, 0); // Reset time to midnight for comparison
     
-        const startExclusion = new Date(today.getFullYear(), 11, 26); // December 26 of this year
-        const endExclusion = new Date(today.getFullYear() + 1, 0, 5); // January 5 of next year
+        const exclusionStart = new Date(today.getFullYear(), 11, 27); // December 27 of this year
+        const exclusionEnd = new Date(today.getFullYear() + 1, 0, 5); // January 5 of next year
     
         const isDecember25 =
             date.getFullYear() === today.getFullYear() &&
@@ -83,13 +83,15 @@ const Email: React.FC = () => {
         // Allow only dates that:
         // 1. Are today or in the future
         // 2. Are not Wednesday (3) or Thursday (4), except December 25
-        // 3. Are not within the exclusion range, except December 25
+        // 3. Are not within the exclusion range (December 27 to January 5), except December 25
         return (
             date >= today &&
-            (!isDecember25 && day !== 3 && day !== 4) || // Allow December 25 regardless of day
+            (!isDecember25 && day !== 3 && day !== 4) && // Restrict Wednesday/Thursday except December 25
+            !(date >= exclusionStart && date <= exclusionEnd) || // Restrict exclusion range except December 25
             isDecember25 // Explicitly allow December 25
         );
     };
+    
     
     
   
