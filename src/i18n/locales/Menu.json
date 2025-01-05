@@ -11,7 +11,7 @@
             "cake1":"Bavarois au haricot adzuki (red bean)",
             "cake2":"Gâteau au chocolat",
             "cake3":"Mascarpone cheese mouse",
-            "plus550":"(+550 yen)"
+            "plus550":"(+600 yen)"
         },
         "course":{
             "amuse" : "Amuse-bouche",
@@ -21,29 +21,29 @@
         },
         "a" : {
             "title": "A Course",
-            "price" :"3,200 Yen",
+            "price" :"3,800 Yen",
             "appetizer":"Appetizer (Seafood Marinade)",
             "main1":"Seasonal Fish Poiret",
             "main2":"Grilled pork loin with mustard miso sauce"
         },
         "b" : {
             "title": "B Course",
-            "price" :"4,300 Yen",
+            "price" :"5,000 Yen",
             "appetizer":"Appetizer (Seafood Marinade)",
             "soup":"Seasonal Soup",
             "main1":"Seasonal Fish Poiret",
             "main2":"Stewed Beef Cheek in Red Wine sauce",
-            "main3":"Wagyu Beef Filet Steak with white sauce (+1800 yen)"
+            "main3":"Wagyu Beef Filet Steak with white sauce (+2,500 yen)"
         },
         "c" : {
             "title": "C Course",
-            "price" :"6,400 Yen",
+            "price" :"7,500 Yen",
             "appetizer":"Appetizer (Seafood Marinade)",
             "soup":"Seasonal Soup",
             "main1":"Fish Dish: Seasonal Fish Poiret",
             "main2":"Meat Dish: Stewed Beef Cheek in Red Wine sauce",
             "or":"or",
-            "main3":"Wagyu Beef Filet Steak white sauce  (+1800 yen)"
+            "main3":"Wagyu Beef Filet Steak white sauce  (+2,500 yen)"
             
         },
         "lunch" : {
@@ -56,7 +56,7 @@
             "main3":"Cabbage Rolls Gratin with Tomato Sauce",
             "main3Title":"Popular and Original Seta-tei Dish",
             "sourbet":"Seasonal Sorbet",
-            "dessertTitle":"Dessert can be upgraded with +￥450 ",
+            "dessertTitle":"Dessert can be upgraded with +￥550 ",
             "dessertChoose":"( Choose one from below )",
             "dessertAndDrink":"Course dessert and drink set",
             "drinks":"Coffee, Black Tea, Herb Tea"
@@ -74,7 +74,7 @@
             "cake1":"小豆のババロア",
             "cake2":"ガトーショコラ",
             "cake3":"マスカルポーネチーズのムース",
-            "plus550":"（＋５５０円）"
+            "plus550":"（＋600円）"
         },
         "course":{
             "amuse" : "一口オードブル",
@@ -84,30 +84,30 @@
         },
         "a" : {
             "title": "A コース",
-            "price" :"3,200円",
+            "price" :"3,800円",
             "appetizer":"前菜（魚介のマリネ）",
             "main1":"季節のお魚のポワレ",
             "main2":"豚ロース肉のグリル マスタード味噌ソース"
         },
         "b" : {
             "title": "B コース",
-            "price" :"4,300円",
+            "price" :"5,000円",
             "appetizer":"前菜（魚介のマリネ）",
             "soup":"季節のスープ",
             "main1":"季節のお魚のポワレ",
             "main2":" 牛ほほ肉の赤ワイン煮",
-            "main3":"和牛ヒレ肉のステーキ ポルト酒のソース（＋１８００円）"
+            "main3":"和牛ヒレ肉のステーキ ポルト酒のソース（＋2,500円）"
 
         },
         "c" : {
             "title": "C コース",
-            "price" :"6,400円",
+            "price" :"7,500円",
             "appetizer":"前菜（魚介のマリネ）",
             "soup":"本日のスープ",
             "main1":"魚料理：季節のお魚のポワレ",
             "main2":"肉料理：牛ほほ肉の赤ワイン煮",
             "or":"または",
-            "main3":"和牛ヒレ肉のステーキ ポルト酒のソース（＋１８００円）"
+            "main3":"和牛ヒレ肉のステーキ ポルト酒のソース（＋2,500円）"
             
         },
         "lunch" : {
@@ -120,7 +120,7 @@
             "main3":"ロールキャベツ トマトソースグラタン",
             "main3Title":"人気のせた亭 オリジナルメニュー",
             "sourbet":"季節のシャーベット",
-            "dessertTitle":"プラス￥450 でコースのデザートに変更できます。",
+            "dessertTitle":"プラス￥550 でコースのデザートに変更できます。",
             "dessertChoose":"（下記からひとつお選びください）",
             "dessertAndDrink":"コースデザートと飲み物のセット",
             "drinks":"コーヒー、紅茶、ハーブティー"

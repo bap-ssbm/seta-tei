@@ -8,7 +8,7 @@ const ACourse = ({ }) => {
                 {t('menu.a.title')}
                 </h2>
                 <p className='underline font-bold'>
-                    ¥3,200
+                    ¥3,800
                 </p>
             </div>
             <p>

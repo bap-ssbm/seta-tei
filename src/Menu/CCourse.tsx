@@ -9,7 +9,7 @@ const CCourse= ({}) => {
                 {t('menu.c.title')}
                 </h2>
                 <p className='underline font-bold'>
-                    ¥6,400
+                    ¥7,500
                 </p>
             </div>
             <p>

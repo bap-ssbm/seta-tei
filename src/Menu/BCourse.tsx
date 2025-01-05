@@ -8,7 +8,7 @@ const BCourse = ({ }) => {
                 {t('menu.b.title')}
                 </h2>
                 <p className='underline font-bold'>
-                    ¥4,300
+                    ¥5,000
                 </p>
             </div>
             <p>

@@ -8,7 +8,7 @@ const Lunch = () => {
                     {t('menu.lunch.title')} {t('menu.lunch.titleEtc')}
                 </h2>
                 <p className='underline font-bold'>
-                    ¥1,800
+                    ¥2,200
                 </p>
             </div>
             <p>
@@ -61,15 +61,15 @@ const Lunch = () => {
                     </li>
                 </ul>
                 <p>
-                {t('menu.lunch.dessertAndDrink')}・・・￥650
+                {t('menu.lunch.dessertAndDrink')}・・・￥800
                 </p>
             </div>
             <hr className='border-dashed w-full' />
             <p>
-            {t('menu.basic.soba')}・・・¥550
+            {t('menu.basic.soba')}・・・¥600
             </p>
             <p>
-            {t('menu.lunch.drinks')}・・・￥400
+            {t('menu.lunch.drinks')}・・・￥500
             </p>
         </div>
     )
