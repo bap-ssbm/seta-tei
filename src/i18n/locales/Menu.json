@@ -37,7 +37,7 @@
         },
         "c" : {
             "title": "C Course",
-            "price" :"7,500 Yen",
+            "price" :"7,200 Yen",
             "appetizer":"Appetizer (Seafood Marinade)",
             "soup":"Seasonal Soup",
             "main1":"Fish Dish: Seasonal Fish Poiret",
@@ -101,7 +101,7 @@
         },
         "c" : {
             "title": "C コース",
-            "price" :"7,500円",
+            "price" :"7,200円",
             "appetizer":"前菜（魚介のマリネ）",
             "soup":"本日のスープ",
             "main1":"魚料理：季節のお魚のポワレ",
