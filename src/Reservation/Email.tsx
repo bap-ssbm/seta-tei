@@ -23,74 +23,88 @@ const Email: React.FC = () => {
     const [loading, setLoading] = useState<boolean>(false)
 
    
-    const filterPassedTime = (time: Date) => {
-        const selectedDate = startDate || new Date();
-        const day = selectedDate.getDay(); // Get the day of the week (0 = Sunday, 1 = Monday, ..., 6 = Saturday)
-        const date = selectedDate.getDate(); // Get the day of the month
-        const month = selectedDate.getMonth(); // Get the month (0 = January, ..., 11 = December)
-        const hour = new Date(time).getHours();
-        const minute = new Date(time).getMinutes();
-    
-        // Special dates: December 23, 24, and 25
-        const isSpecialDate = month === 11 && (date === 23 || date === 24 || date === 25);
-    
-        if (isSpecialDate) {
-            return (
-                (hour === 11 && minute >= 30) || // 11:30–11:59 (Lunch start)
-                (hour === 12) ||                 // 12:00–12:59
-                (hour === 13 && minute <= 30) || // 13:00–13:30
-                (hour === 17 && minute >= 30) || // 17:30–17:59 (Dinner start)
-                (hour === 18) ||                 // 18:00–18:59
-                (hour === 19 && minute <= 30)    // 19:00–19:30
-            );
-        }
-    
-        // Regular Monday and Tuesday logic (lunch only)
-        if (day === 1 || day === 2) {
-            return (
-                (hour === 11 && minute >= 30) || // 11:30–11:59
-                (hour === 12) ||                 // 12:00–12:59
-                (hour === 13 && minute <= 30)    // 13:00–13:30
-            );
-        }
-    
-        // Regular logic for all other dates (lunch and dinner)
-        return (
-            (hour === 11 && minute >= 30) || // 11:30–11:59
-            (hour === 12) ||                 // 12:00–12:59
-            (hour === 13 && minute <= 30) || // 13:00–13:30
-            (hour === 17 && minute >= 30) || // 17:30–17:59
-            (hour === 18) ||                 // 18:00–18:59
-            (hour === 19 && minute <= 30)    // 19:00–19:30
-        );
-    };
+ const filterPassedTime = (time: Date) => {
+    const selectedDate = startDate || new Date();
+    const day = selectedDate.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+    const date = selectedDate.getDate();
+    const month = selectedDate.getMonth(); // 0 = Jan, ..., 11 = Dec
+    const year = selectedDate.getFullYear();
+    const hour = new Date(time).getHours();
+    const minute = new Date(time).getMinutes();
+
+    const isThisYear = year === new Date().getFullYear();
+
+    // Special dates: December 23, 24, 25 — allow lunch + dinner
+    const isSpecialDate = month === 11 && (date === 23 || date === 24 || date === 25);
+
+    // April 20 — block all times
+    const isBlockedApril20 = isThisYear && month === 3 && date === 20;
+
+    // April 26 — allow lunch only
+    const isApril26LunchOnly = isThisYear && month === 3 && date === 26;
+
+    const isLunchTime =
+        (hour === 11 && minute >= 30) ||
+        hour === 12 ||
+        (hour === 13 && minute <= 30);
+
+    const isDinnerTime =
+        (hour === 17 && minute >= 30) ||
+        hour === 18 ||
+        (hour === 19 && minute <= 30);
+
+    if (isBlockedApril20) {
+        return false; // no time allowed
+    }
+
+    if (isApril26LunchOnly) {
+        return isLunchTime; // only lunch allowed
+    }
+
+    if (isSpecialDate) {
+        return isLunchTime || isDinnerTime;
+    }
+
+    if (day === 1 || day === 2) {
+        return isLunchTime;
+    }
+
+    return isLunchTime || isDinnerTime;
+};
+
     
     
 
-    const isOff = (date: Date) => {
-        const day = date.getDay();
-        const today = new Date();
-        today.setHours(0, 0, 0, 0); // Reset time to midnight for comparison
-    
-        const exclusionStart = new Date(today.getFullYear(), 11, 27); // December 27 of this year
-        const exclusionEnd = new Date(today.getFullYear() + 1, 0, 5); // January 5 of next year
-    
-        const isDecember25 =
-            date.getFullYear() === today.getFullYear() &&
-            date.getMonth() === 11 && // December
-            date.getDate() === 25;
-    
-        // Allow only dates that:
-        // 1. Are today or in the future
-        // 2. Are not Wednesday (3) or Thursday (4), except December 25
-        // 3. Are not within the exclusion range (December 27 to January 5), except December 25
-        return (
-            date >= today &&
-            (!isDecember25 && day !== 3 && day !== 4) && // Restrict Wednesday/Thursday except December 25
-            !(date >= exclusionStart && date <= exclusionEnd) || // Restrict exclusion range except December 25
-            isDecember25 // Explicitly allow December 25
-        );
-    };
+const isOff = (date: Date) => {
+    const day = date.getDay();
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // Reset time to midnight for comparison
+
+    const year = today.getFullYear();
+    const exclusionStart = new Date(year, 11, 27); // December 27 of this year
+    const exclusionEnd = new Date(year + 1, 0, 5); // January 5 of next year
+
+    const isDecember25 =
+        date.getFullYear() === year &&
+        date.getMonth() === 11 && // December
+        date.getDate() === 25;
+
+    const isApril20 =
+        date.getFullYear() === year &&
+        date.getMonth() === 3 && // April
+        date.getDate() === 20;
+
+    // Block April 20
+    if (isApril20) return false;
+
+    return (
+        date >= today &&
+        (!isDecember25 && day !== 3 && day !== 4) && // Restrict Wednesday/Thursday except December 25
+        !(date >= exclusionStart && date <= exclusionEnd) || // Restrict exclusion range except December 25
+        isDecember25 // Explicitly allow December 25
+    );
+};
+
     
     
     
