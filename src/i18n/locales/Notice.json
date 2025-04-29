@@ -1,10 +1,10 @@
 {
     "en": {
-       "txt" :"We regret to inform you that we will be temporarily closed for both lunch and dinner on Sunday, April 20..",
+       "txt" :"We regret to inform you that the entire day on June 14th will be reserved.",
        "menu": "We regret to inform you that due to rising product costs, we are planning a price adjustment of approximately 15-20% starting January 2025. We kindly ask for your understanding."
     },
     "ja": {
-        "txt" :"恐れ入りますが、4月20日日曜日はランチ、ディナーとも臨時休業します。",
+        "txt" :"恐れ入りますが、6月14日は終日貸切になります。",
         "menu": "申し訳ありませんが、原材料高騰の為、2025年1月から15-20%程度の価格改定を予定しております。ご了承下さい。"
     }
 }

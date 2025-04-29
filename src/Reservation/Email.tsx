@@ -94,8 +94,13 @@ const isOff = (date: Date) => {
         date.getMonth() === 3 && // April
         date.getDate() === 20;
 
-    // Block April 20
-    if (isApril20) return false;
+    const isJune14 =
+        date.getFullYear() === 2025 &&
+        date.getMonth() === 5 && // June
+        date.getDate() === 14;
+
+    // Block April 20 and June 14
+    if (isApril20 || isJune14) return false;
 
     return (
         date >= today &&
@@ -104,6 +109,7 @@ const isOff = (date: Date) => {
         isDecember25 // Explicitly allow December 25
     );
 };
+
 
     
     
