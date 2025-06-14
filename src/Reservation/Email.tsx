@@ -100,7 +100,7 @@ const isOff = (date: Date) => {
         date.getDate() === 14;
 
     // Block April 20 and June 14
-    if (isApril20 || isJune14) return false;
+    if (isApril20 ) return false;
 
     return (
         date >= today &&
