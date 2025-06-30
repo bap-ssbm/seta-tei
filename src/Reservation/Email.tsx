@@ -43,6 +43,9 @@ const Email: React.FC = () => {
     // April 26 — allow lunch only
     const isApril26LunchOnly = isThisYear && month === 3 && date === 26;
 
+    // July 11, 2025 — allow lunch only (block dinner)
+    const isJuly11LunchOnly = year === 2025 && month === 6 && date === 11;
+
     const isLunchTime =
         (hour === 11 && minute >= 30) ||
         hour === 12 ||
@@ -57,7 +60,7 @@ const Email: React.FC = () => {
         return false; // no time allowed
     }
 
-    if (isApril26LunchOnly) {
+    if (isApril26LunchOnly || isJuly11LunchOnly) {
         return isLunchTime; // only lunch allowed
     }
 
@@ -99,8 +102,18 @@ const isOff = (date: Date) => {
         date.getMonth() === 5 && // June
         date.getDate() === 14;
 
-    // Block April 20 and June 14
-    if (isApril20 ) return false;
+    const isJuly8 =
+        date.getFullYear() === 2025 &&
+        date.getMonth() === 6 && // July
+        date.getDate() === 8;
+
+    const isAugust24 =
+        date.getFullYear() === 2025 &&
+        date.getMonth() === 7 && // August
+        date.getDate() === 24;
+
+    // Block April 20, June 14, July 8, and August 24
+    if (isApril20 || isJuly8 || isAugust24) return false;
 
     return (
         date >= today &&
