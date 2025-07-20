@@ -8,7 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { BiLoaderAlt } from 'react-icons/bi'
 
 const Email: React.FC = () => {
-    const { t } = useTranslation();
+    const { t , i18n} = useTranslation();
     const form = useRef<HTMLFormElement | null>(null);
     const [sent, setSent] = useState<string>("notSent")
     const [name, setName] = useState<string>("")
@@ -112,8 +112,13 @@ const isOff = (date: Date) => {
         date.getMonth() === 7 && // August
         date.getDate() === 24;
 
-    // Block April 20, June 14, July 8, and August 24
-    if (isApril20 || isJuly8 || isAugust24) return false;
+    // Check if date is within summer vacation period (August 27 - September 4, 2025)
+    const summerVacationStart = new Date(2025, 7, 27); // August 27, 2025
+    const summerVacationEnd = new Date(2025, 8, 4); // September 4, 2025
+    const isSummerVacation = date >= summerVacationStart && date <= summerVacationEnd;
+
+    // Block April 20, June 14, July 8, August 24, and summer vacation period
+    if (isApril20 || isJuly8 || isAugust24 || isSummerVacation) return false;
 
     return (
         date >= today &&
@@ -234,12 +239,18 @@ const isOff = (date: Date) => {
                 <label className={classes.label}>{t('homePage.form.other.name')}</label>
                 <textarea onChange={catchOther} placeholder={t('homePage.form.other.placeholder') + ''} className='border px-2 py-2 block w-full' name="other" />
             </div>
-            <p className=''>
-            {t('homePage.form.reserveNotice')}<br/>{t('homePage.form.reserveNotice2')}
-            </p>
+            
             <button className={'w-full flex gap-2 items-center text-lg justify-center bg-blue-950 text-white py-3 hover:opacity-60 duration-300' + (loading?' pointer-events-none':'')}>
             {loading ? (<BiLoaderAlt className='animate-spin' />) : t('homePage.form.reserveBtn')}
             </button>
+            <p className='text-sm'>
+            {t('homePage.form.reserveNotice')}<br/>{t('homePage.form.reserveNotice2')}<br/>
+            {i18n.language === "ja" ? (
+  <>※当店からのメール（<a className='underline' href="mailto:setatei0077@gmail.com">setatei0077@gmail.com</a>）が迷惑メールや着信拒否などにならないような設定をお願い致します。</>
+) : (
+  <>*Please set up your email settings so that emails from our restaurant( <a className='underline' href="mailto:setatei0077@gmail.com">setatei0077@gmail.com</a>) are not blocked as spam or rejected.</>
+)}<br/>{t('homePage.form.reserveNotice3')}
+            </p>
             {(sent != 'notSent')&&
             <p className='text-red-800 text-center'>
             {sent=='sent'? t('homePage.form.sentMessage'):t('homePage.form.errorMessage') }

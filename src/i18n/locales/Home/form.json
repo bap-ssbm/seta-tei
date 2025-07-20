@@ -36,6 +36,7 @@
         },
         "reserveNotice" : "*Please make reservations using this form by 6:00 p.m. on the day before your desired date.",
         "reserveNotice2" : "*Please note that your reservation will not be confirmed until you receive a reservation confirmation email from us.",
+        "reserveNotice3" : "*We will send you a confirmation email within 1 business day after receiving your reservation request through this form. If you do not receive a confirmation email within 1 business day, please contact us by phone.",
         "reserveBtn" : "Make Reservation",
          "sentMessage": "Reservation message sent.",
          "errorMessage": "Error try again."
@@ -77,6 +78,7 @@
             },
             "reserveNotice" : "※この予約フォームからのご予約はご要望日の前日18時までにお願いします",
             "reserveNotice2" : "※ご予約は当店からの予約確認メールが送られるまでは確定ではありません、ご了承ください。",
+            "reserveNotice3" : "※この予約フォームで申請頂いてから１営業日以内にはこちらからの確認メールを送らせて頂いております。１営業日以内に確認メールが届かない場合は、お手数ですがお電話にてご連絡ください。",
             "reserveBtn" : "予約する",
             "sentMessage": "メールが送信されました",
              "errorMessage": "エラー"
