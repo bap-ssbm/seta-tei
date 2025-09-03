@@ -46,6 +46,9 @@ const Email: React.FC = () => {
     // July 11, 2025 — allow lunch only (block dinner)
     const isJuly11LunchOnly = year === 2025 && month === 6 && date === 11;
 
+    // September 14, 2025 — allow lunch only (block dinner)
+    const isSeptember12LunchOnly = year === 2025 && month === 8 && date === 12;
+
     const isLunchTime =
         (hour === 11 && minute >= 30) ||
         hour === 12 ||
@@ -60,7 +63,7 @@ const Email: React.FC = () => {
         return false; // no time allowed
     }
 
-    if (isApril26LunchOnly || isJuly11LunchOnly) {
+    if (isApril26LunchOnly || isJuly11LunchOnly || isSeptember12LunchOnly) {
         return isLunchTime; // only lunch allowed
     }
 
@@ -114,11 +117,12 @@ const isOff = (date: Date) => {
 
     // Check if date is within summer vacation period (August 27 - September 4, 2025)
     const summerVacationStart = new Date(2025, 7, 27); // August 27, 2025
-    const summerVacationEnd = new Date(2025, 8, 4); // September 4, 2025
+    const summerVacationEnd = new Date(2025, 8, 6); // September 6, 2025
     const isSummerVacation = date >= summerVacationStart && date <= summerVacationEnd;
+    const isSeptember142025 = date.getFullYear() === 2025 && date.getMonth() === 8 && date.getDate() === 14;
 
     // Block April 20, June 14, July 8, August 24, and summer vacation period
-    if (isApril20 || isJuly8 || isAugust24 || isSummerVacation) return false;
+    if (isApril20 || isJuly8 || isAugust24 || isSummerVacation || isSeptember142025) return false;
 
     return (
         date >= today &&
