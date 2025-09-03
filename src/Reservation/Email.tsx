@@ -23,114 +23,106 @@ const Email: React.FC = () => {
     const [loading, setLoading] = useState<boolean>(false)
 
    
- const filterPassedTime = (time: Date) => {
-    const selectedDate = startDate || new Date();
-    const day = selectedDate.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
-    const date = selectedDate.getDate();
-    const month = selectedDate.getMonth(); // 0 = Jan, ..., 11 = Dec
-    const year = selectedDate.getFullYear();
-    const hour = new Date(time).getHours();
-    const minute = new Date(time).getMinutes();
-
-    const isThisYear = year === new Date().getFullYear();
-
-    // Special dates: December 23, 24, 25 — allow lunch + dinner
-    const isSpecialDate = month === 11 && (date === 23 || date === 24 || date === 25);
-
-    // April 20 — block all times
-    const isBlockedApril20 = isThisYear && month === 3 && date === 20;
-
-    // April 26 — allow lunch only
-    const isApril26LunchOnly = isThisYear && month === 3 && date === 26;
-
-    // July 11, 2025 — allow lunch only (block dinner)
-    const isJuly11LunchOnly = year === 2025 && month === 6 && date === 11;
-
-    // September 14, 2025 — allow lunch only (block dinner)
-    const isSeptember12LunchOnly = year === 2025 && month === 8 && date === 12;
-
-    const isLunchTime =
-        (hour === 11 && minute >= 30) ||
-        hour === 12 ||
-        (hour === 13 && minute <= 30);
-
-    const isDinnerTime =
-        (hour === 17 && minute >= 30) ||
-        hour === 18 ||
-        (hour === 19 && minute <= 30);
-
-    if (isBlockedApril20) {
-        return false; // no time allowed
+   // Specific days that are completely off
+const fullyBlockedDates = [
+    { year: 2025, month: 3, day: 20 }, // April 20, 2025
+    { year: 2025, month: 5, day: 14 }, // June 14, 2025
+    { year: 2025, month: 6, day: 8 },  // July 8, 2025
+    { year: 2025, month: 7, day: 24 }, // August 24, 2025
+    { year: 2025, month: 8, day: 14 }, // September 14, 2025
+  ];
+  
+  // Ranges of days that are off
+  const blockedRanges = [
+    {
+      start: new Date(2025, 7, 27), // Aug 27, 2025
+      end: new Date(2025, 8, 6),    // Sep 6, 2025
     }
-
-    if (isApril26LunchOnly || isJuly11LunchOnly || isSeptember12LunchOnly) {
-        return isLunchTime; // only lunch allowed
-    }
-
-    if (isSpecialDate) {
+  ];
+  
+  // Dates with only lunch/dinner allowed
+  const specialDates = [
+    { year: 2025, month: 8, day: 12, lunchOnly: true, dinnerOnly: false },
+    { year: 2025, month: 8, day: 14, lunchOnly: true, dinnerOnly: false },
+    { year: 2025, month: 8, day: 14, lunchOnly: true, dinnerOnly: true },
+  ];
+  
+    function matchesDate(date: Date, target: { year: number; month: number; day: number }) {
+        return (
+          date.getFullYear() === target.year &&
+          date.getMonth() === target.month &&
+          date.getDate() === target.day
+        );
+      }
+      
+      function isInBlockedRange(date: Date) {
+        return blockedRanges.some(r => date >= r.start && date <= r.end);
+      }
+      
+      function getSpecialDateRule(date: Date) {
+        return specialDates.find(d => matchesDate(date, d));
+      }
+      
+    const filterPassedTime = (time: Date) => {
+        const selectedDate = startDate || new Date();
+        const hour = time.getHours();
+        const minute = time.getMinutes();
+      
+        const isLunchTime =
+          (hour === 11 && minute >= 30) ||
+          hour === 12 ||
+          (hour === 13 && minute <= 30);
+      
+        const isDinnerTime =
+          (hour === 17 && minute >= 30) ||
+          hour === 18 ||
+          (hour === 19 && minute <= 30);
+      
+        const rule = getSpecialDateRule(selectedDate);
+      
+        if (rule) {
+          if (rule.lunchOnly && !rule.dinnerOnly) return isLunchTime;
+          if (!rule.lunchOnly && rule.dinnerOnly) return isDinnerTime;
+          if (rule.lunchOnly && rule.dinnerOnly) return isLunchTime || isDinnerTime;
+        }
+      
+        // Default rules (example: Mon/Tue lunch only)
+        if (selectedDate.getDay() === 1 || selectedDate.getDay() === 2) {
+          return isLunchTime;
+        }
+      
         return isLunchTime || isDinnerTime;
-    }
-
-    if (day === 1 || day === 2) {
-        return isLunchTime;
-    }
-
-    return isLunchTime || isDinnerTime;
-};
+      };
+      
 
     
     
 
-const isOff = (date: Date) => {
-    const day = date.getDay();
-    const today = new Date();
-    today.setHours(0, 0, 0, 0); // Reset time to midnight for comparison
-
-    const year = today.getFullYear();
-    const exclusionStart = new Date(year, 11, 27); // December 27 of this year
-    const exclusionEnd = new Date(year + 1, 0, 5); // January 5 of next year
-
-    const isDecember25 =
-        date.getFullYear() === year &&
-        date.getMonth() === 11 && // December
-        date.getDate() === 25;
-
-    const isApril20 =
-        date.getFullYear() === year &&
-        date.getMonth() === 3 && // April
-        date.getDate() === 20;
-
-    const isJune14 =
-        date.getFullYear() === 2025 &&
-        date.getMonth() === 5 && // June
-        date.getDate() === 14;
-
-    const isJuly8 =
-        date.getFullYear() === 2025 &&
-        date.getMonth() === 6 && // July
-        date.getDate() === 8;
-
-    const isAugust24 =
-        date.getFullYear() === 2025 &&
-        date.getMonth() === 7 && // August
-        date.getDate() === 24;
-
-    // Check if date is within summer vacation period (August 27 - September 4, 2025)
-    const summerVacationStart = new Date(2025, 7, 27); // August 27, 2025
-    const summerVacationEnd = new Date(2025, 8, 6); // September 6, 2025
-    const isSummerVacation = date >= summerVacationStart && date <= summerVacationEnd;
-    const isSeptember142025 = date.getFullYear() === 2025 && date.getMonth() === 8 && date.getDate() === 14;
-
-    // Block April 20, June 14, July 8, August 24, and summer vacation period
-    if (isApril20 || isJuly8 || isAugust24 || isSummerVacation || isSeptember142025) return false;
-
-    return (
-        date >= today &&
-        (!isDecember25 && day !== 3 && day !== 4) && // Restrict Wednesday/Thursday except December 25
-        !(date >= exclusionStart && date <= exclusionEnd) || // Restrict exclusion range except December 25
-        isDecember25 // Explicitly allow December 25
-    );
-};
+      const isOff = (date: Date) => {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+      
+        const year = today.getFullYear();
+        const exclusionStart = new Date(year, 11, 27); // Dec 27
+        const exclusionEnd = new Date(year + 1, 0, 5); // Jan 5
+      
+        const isDecember25 =
+          date.getFullYear() === year &&
+          date.getMonth() === 11 &&
+          date.getDate() === 25;
+      
+        // Check if date is fully blocked
+        if (fullyBlockedDates.some(d => matchesDate(date, d)) || isInBlockedRange(date)) {
+          return false;
+        }
+      
+        return (
+          date >= today &&
+          (!isDecember25 && date.getDay() !== 3 && date.getDay() !== 4) && // no Wed/Thu except Dec 25
+          (!(date >= exclusionStart && date <= exclusionEnd) || isDecember25)
+        );
+      };
+      
 
 
     
