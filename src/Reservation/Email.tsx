@@ -30,6 +30,7 @@ const fullyBlockedDates = [
     { year: 2025, month: 6, day: 8 },  // July 8, 2025
     { year: 2025, month: 7, day: 24 }, // August 24, 2025
     { year: 2025, month: 8, day: 14 }, // September 14, 2025
+        { year: 2025, month: 8, day: 15 }, 
   ];
   
   // Ranges of days that are off
