@@ -25,12 +25,13 @@ const Email: React.FC = () => {
    
    // Specific days that are completely off
 const fullyBlockedDates = [
-    { year: 2025, month: 3, day: 20 }, // April 20, 2025
-    { year: 2025, month: 5, day: 14 }, // June 14, 2025
-    { year: 2025, month: 6, day: 8 },  // July 8, 2025
-    { year: 2025, month: 7, day: 24 }, // August 24, 2025
-    { year: 2025, month: 8, day: 14 }, // September 14, 2025
-        { year: 2025, month: 8, day: 15 }, 
+    { year: 2025, month: 4, day: 20 }, // April 20, 2025
+    { year: 2025, month: 6, day: 14 }, // June 14, 2025
+    { year: 2025, month: 7, day: 8 },  // July 8, 2025
+    { year: 2025, month: 8, day: 24 }, // August 24, 2025
+    { year: 2025, month: 9, day: 14 }, // September 14, 2025
+    { year: 2025, month: 8, day: 15 }, 
+    { year: 2025, month: 11, day: 24 }, 
   ];
   
   // Ranges of days that are off
@@ -43,15 +44,15 @@ const fullyBlockedDates = [
   
   // Dates with only lunch/dinner allowed
   const specialDates = [
-    { year: 2025, month: 8, day: 12, lunchOnly: true, dinnerOnly: false },
-    { year: 2025, month: 8, day: 14, lunchOnly: true, dinnerOnly: false },
-    { year: 2025, month: 8, day: 14, lunchOnly: true, dinnerOnly: true },
+    { year: 2025, month: 9, day: 12, lunchOnly: true, dinnerOnly: false },
+    { year: 2025, month: 9, day: 14, lunchOnly: true, dinnerOnly: false },
+    { year: 2025, month: 9, day: 14, lunchOnly: true, dinnerOnly: true },
   ];
   
     function matchesDate(date: Date, target: { year: number; month: number; day: number }) {
         return (
           date.getFullYear() === target.year &&
-          date.getMonth() === target.month &&
+          date.getMonth() === target.month - 1 &&
           date.getDate() === target.day
         );
       }
