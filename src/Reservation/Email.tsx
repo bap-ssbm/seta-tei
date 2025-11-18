@@ -48,6 +48,9 @@ const fullyBlockedDates = [
     { year: 2025, month: 9, day: 12, lunchOnly: true, dinnerOnly: false },
     { year: 2025, month: 9, day: 14, lunchOnly: true, dinnerOnly: false },
     { year: 2025, month: 9, day: 14, lunchOnly: true, dinnerOnly: true },
+    { year: 2025, month: 11, day: 23, lunchOnly: false, dinnerOnly: true },
+    { year: 2025, month: 11, day: 29, lunchOnly: true, dinnerOnly: false },
+    { year: 2025, month: 12, day: 6, lunchOnly: true, dinnerOnly: false },
   ];
   
     function matchesDate(date: Date, target: { year: number; month: number; day: number }) {
