@@ -33,7 +33,9 @@ const fullyBlockedDates = [
     { year: 2025, month: 8, day: 15 }, 
     { year: 2025, month: 11, day: 24 }, 
     { year: 2025, month: 11, day: 11 }, 
-        { year: 2025, month: 11, day: 29 }, 
+    { year: 2025, month: 11, day: 29 }, 
+     { year: 2025, month: 12, day: 26 },
+     { year: 2026, month:1, day: 6 }, 
   ];
   
   // Ranges of days that are off
@@ -104,32 +106,39 @@ const fullyBlockedDates = [
 
     
     
+const isOff = (date: Date) => {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
 
-      const isOff = (date: Date) => {
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
-      
-        const year = today.getFullYear();
-        const exclusionStart = new Date(year, 11, 27); // Dec 27
-        const exclusionEnd = new Date(year + 1, 0, 5); // Jan 5
-      
-        const isDecember25 =
-          date.getFullYear() === year &&
-          date.getMonth() === 11 &&
-          date.getDate() === 25;
-      
-        // Check if date is fully blocked
-        if (fullyBlockedDates.some(d => matchesDate(date, d)) || isInBlockedRange(date)) {
-          return false;
-        }
-      
-        return (
-          date >= today &&
-          (!isDecember25 && date.getDay() !== 3 && date.getDay() !== 4) && // no Wed/Thu except Dec 25
-          (!(date >= exclusionStart && date <= exclusionEnd) || isDecember25)
-        );
-      };
-      
+  const year = today.getFullYear();
+  const exclusionStart = new Date(year, 11, 27); // Dec 27
+  const exclusionEnd = new Date(year + 1, 0, 5); // Jan 5
+
+  const isDecember24 =
+    date.getFullYear() === year &&
+    date.getMonth() === 11 &&
+    date.getDate() === 24;
+
+  const isDecember25 =
+    date.getFullYear() === year &&
+    date.getMonth() === 11 &&
+    date.getDate() === 25;
+
+  // Check if date is fully blocked
+  if (fullyBlockedDates.some(d => matchesDate(date, d)) || isInBlockedRange(date)) {
+    return false;
+  }
+
+  return (
+    date >= today &&
+
+    // ❗ Allow Dec 24 & 25 even if they are Wed/Thu
+    (!(date.getDay() === 3 || date.getDay() === 4) || isDecember24 || isDecember25) &&
+
+    // Same override for exclusion range
+    (!(date >= exclusionStart && date <= exclusionEnd) || isDecember24 || isDecember25)
+  );
+};
 
 
     

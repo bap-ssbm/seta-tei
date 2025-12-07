@@ -1,10 +1,10 @@
 {
     "en": {
-       "txt" :"We will be taking summer vacation from August 27th to September 6th.",
+       "txt" :"On December 20, 21, 24, and 25, we only accept reservations for the Christmas special menu: the 7,500 yen half course (lunch only) or the 12,500 yen full course.",
        "menu": "We regret to inform you that due to rising product costs, we are planning a price adjustment of approximately 15-20% starting January 2025. We kindly ask for your understanding."
     },
     "ja": {
-        "txt" :"8月27日より9月6日までは夏季休暇を頂きます。",
+        "txt" :"12/20、21、24、25は、クリスマス特別メニューの7,500円（昼のみハーフコース）又は12,500円（フルコース）のみのご予約を承ります。",
         "menu": "申し訳ありませんが、原材料高騰の為、2025年1月から15-20%程度の価格改定を予定しております。ご了承下さい。"
     }
 }
