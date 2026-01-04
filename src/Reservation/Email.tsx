@@ -36,6 +36,7 @@ const fullyBlockedDates = [
     { year: 2025, month: 11, day: 29 }, 
      { year: 2025, month: 12, day: 26 },
      { year: 2026, month:1, day: 6 }, 
+      { year: 2026, month:2, day: 8 }, 
   ];
   
   // Ranges of days that are off
