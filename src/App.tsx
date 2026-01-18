@@ -10,6 +10,8 @@ import LanguageBtn from './components/ui/navbar/LanguageBtn'
 import Concept from './concept/Concept'
 import MenuPage from './Menu/MenuPage'
 import { Analytics } from '@vercel/analytics/react';
+import Login from './login/Login'
+import Admin from './admin/Admin';
 WebFont.load({
   custom: {
     families: ['hannari'],
@@ -28,6 +30,8 @@ const App = () => {
           <Route path='/menu' element={<MenuPage />} />
           <Route path='/reserve' element={<Reservation />} />
           <Route path='/access' element={<Access />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/admin' element={<Admin />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
         <Footer />

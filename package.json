@@ -21,6 +21,7 @@
     "emailjs": "^4.0.3",
     "i18next": "^22.4.15",
     "i18next-browser-languagedetector": "^7.0.1",
+    "md5": "^2.3.0",
     "react": "^18.2.0",
     "react-datepicker": "^7.5.0",
     "react-dom": "^18.2.0",
@@ -56,6 +57,7 @@
     ]
   },
   "devDependencies": {
+    "@types/md5": "^2.3.6",
     "framer-motion": "^10.12.4",
     "react-router-dom": "^6.10.0",
     "tailwindcss": "^3.3.2"

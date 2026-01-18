@@ -22,25 +22,42 @@ const Email: React.FC = () => {
     const [other, setOther] = useState<string>("")
     const [loading, setLoading] = useState<boolean>(false)
 
-   
-   // Specific days that are completely off
-const fullyBlockedDates = [
-    { year: 2025, month: 4, day: 20 }, // April 20, 2025
-    { year: 2025, month: 6, day: 14 }, // June 14, 2025
-    { year: 2025, month: 7, day: 8 },  // July 8, 2025
-    { year: 2025, month: 8, day: 24 }, // August 24, 2025
-    { year: 2025, month: 9, day: 14 }, // September 14, 2025
-    { year: 2025, month: 8, day: 15 }, 
-    { year: 2025, month: 11, day: 24 }, 
-    { year: 2025, month: 11, day: 11 }, 
-    { year: 2025, month: 11, day: 29 }, 
-     { year: 2025, month: 12, day: 26 },
-     { year: 2026, month:1, day: 6 }, 
-      { year: 2026, month:2, day: 8 }, 
+   interface BlockedDate {
+    year: number;
+    month: number;
+    day: number;
+    lunch: boolean;
+    dinner: boolean;
+   }
+
+    const blockedDates: BlockedDate[] =[
+      { year: 2025, month: 4, day: 20, lunch: false, dinner: false },
+      { year: 2025, month: 6, day: 14, lunch: false, dinner: false },
+      { year: 2025, month: 7, day: 8, lunch: false, dinner: false }, 
+      { year: 2025, month: 8, day: 24, lunch: false, dinner: false },
+      { year: 2025, month: 9, day: 14, lunch: false, dinner: false }, 
+      { year: 2025, month: 8, day: 15, lunch: false, dinner: false }, 
+      { year: 2025, month: 11, day: 24, lunch: false, dinner: false }, 
+      { year: 2025, month: 11, day: 11, lunch: false, dinner: false }, 
+      { year: 2025, month: 11, day: 29, lunch: false, dinner: false }, 
+       { year: 2025, month: 12, day: 26,lunch: false, dinner: false },
+       { year: 2026, month:1, day: 6,lunch: false, dinner: false }, 
+        { year: 2026, month:2, day: 8, lunch: false, dinner: false }, 
+        { year: 2025, month: 9, day: 12, lunch: true, dinner: false },
+      { year: 2025, month: 9, day: 14, lunch: true, dinner: false },
+      { year: 2025, month: 9, day: 14, lunch: true, dinner: true },
+      { year: 2025, month: 11, day: 23, lunch: true, dinner: false },
+      { year: 2025, month: 11, day: 29, lunch: true, dinner: false },
+      { year: 2025, month: 12, day: 6, lunch: true, dinner: false },
+      ]
+
+  
+    
+const fullyBlockedDates: BlockedDate[] = [
   ];
   
   // Ranges of days that are off
-  const blockedRanges = [
+  const blockedRanges: { start: Date; end: Date }[] = [
     {
       start: new Date(2025, 7, 27), // Aug 27, 2025
       end: new Date(2025, 8, 6),    // Sep 6, 2025
@@ -48,14 +65,16 @@ const fullyBlockedDates = [
   ];
   
   // Dates with only lunch/dinner allowed
-  const specialDates = [
-    { year: 2025, month: 9, day: 12, lunchOnly: true, dinnerOnly: false },
-    { year: 2025, month: 9, day: 14, lunchOnly: true, dinnerOnly: false },
-    { year: 2025, month: 9, day: 14, lunchOnly: true, dinnerOnly: true },
-    { year: 2025, month: 11, day: 23, lunchOnly: true, dinnerOnly: false },
-    { year: 2025, month: 11, day: 29, lunchOnly: true, dinnerOnly: false },
-    { year: 2025, month: 12, day: 6, lunchOnly: true, dinnerOnly: false },
+  const specialDates: BlockedDate[] = [
   ];
+
+  blockedDates.forEach(date => {
+   if (!date.lunch && !date.dinner) {
+    fullyBlockedDates.push(date);
+   } else {
+    specialDates.push(date);
+   }
+  });
   
     function matchesDate(date: Date, target: { year: number; month: number; day: number }) {
         return (
@@ -91,9 +110,9 @@ const fullyBlockedDates = [
         const rule = getSpecialDateRule(selectedDate);
       
         if (rule) {
-          if (rule.lunchOnly && !rule.dinnerOnly) return isLunchTime;
-          if (!rule.lunchOnly && rule.dinnerOnly) return isDinnerTime;
-          if (rule.lunchOnly && rule.dinnerOnly) return isLunchTime || isDinnerTime;
+          if (rule.lunch && !rule.dinner) return isLunchTime;
+          if (!rule.lunch && rule.dinner) return isDinnerTime;
+          if (rule.lunch && rule.dinner) return isLunchTime || isDinnerTime;
         }
       
         // Default rules (example: Mon/Tue lunch only)
