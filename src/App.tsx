@@ -30,8 +30,8 @@ const App = () => {
           <Route path='/menu' element={<MenuPage />} />
           <Route path='/reserve' element={<Reservation />} />
           <Route path='/access' element={<Access />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/admin' element={<Admin />} />
+          {/* <Route path='/login' element={<Login />} />
+          <Route path='/admin' element={<Admin />} /> */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
         <Footer />
