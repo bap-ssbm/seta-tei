@@ -64,6 +64,7 @@ const Email: React.FC = () => {
              { year: 2026, month:6, day: 13, lunch: true, dinner: false },
              { year: 2026, month:7, day: 10, lunch: false, dinner: false },
              { year: 2026, month:8, day: 1, lunch: false, dinner: true },
+              { year: 2026, month:9, day: 22, lunch: false, dinner: true },
               { year: 2026, month:9, day: 23, lunch: false, dinner: true },
       ]
 
