@@ -44,3 +44,74 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+---
+
+# 管理画面（予約ブロック日の編集）
+
+`/login` からログインし、`/admin` で予約のブロック日を追加・変更・解除できます。
+変更は Supabase に保存され、**再デプロイなしで予約フォームに即反映されます**。
+
+予約フォーム（`src/Reservation/Email.tsx`）は起動時に Supabase からブロック日を取得します。
+取得できない場合は `src/Data/blockedDates.ts` の既定値にフォールバックするため、
+Supabase が落ちてもフォームは動作します。
+
+## セットアップ（初回のみ）
+
+### 1. Supabase プロジェクトを作成
+
+[supabase.com](https://supabase.com) で無料プロジェクトを作成します。
+
+### 2. テーブルを作成
+
+ダッシュボード → **SQL Editor** で、以下を順に実行します。
+
+1. `supabase/schema.sql` … テーブルと権限設定
+2. `supabase/seed.sql` … 既存のブロック日 42 件を投入
+
+### 3. 管理者ユーザーを作成
+
+ダッシュボード → **Authentication** → **Users** → **Add user** →
+**Create new user** で作成します。
+
+- **Email**: `admin@seta-tei.local`
+  （`＜ログインしたいユーザー名＞@＜REACT_APP_ADMIN_EMAIL_DOMAIN の値＞`）
+- **Password**: 従来の管理パスワード
+- **Auto Confirm User**: ✅ オンにする
+
+これで、ログイン画面のユーザー名に `admin` と入力できるようになります。
+ユーザー名を変えたい場合は、Supabase 側のメールアドレスの `@` より前を変更してください。
+
+> セキュリティ上、**メール招待や新規サインアップは有効にしないでください。**
+> Authentication → Providers → Email の「Enable sign ups」はオフのままにします。
+
+### 4. 環境変数を設定
+
+`.env`（ローカル）と Vercel の Environment Variables に以下を設定します。
+値はダッシュボード → **Project Settings** → **API** から取得します。
+
+```
+REACT_APP_SUPABASE_URL=https://xxxxxxxxxxxx.supabase.co
+REACT_APP_SUPABASE_ANON_KEY=eyJhbGci...
+REACT_APP_ADMIN_EMAIL_DOMAIN=seta-tei.local
+```
+
+`anon key` は公開前提のキーです。書き込みはログイン済みユーザーのみに制限されているため、
+ブラウザに含まれても問題ありません（`supabase/schema.sql` の RLS 設定）。
+
+### 5. 再デプロイ
+
+環境変数は**ビルド時に埋め込まれる**ため、設定後に一度デプロイし直してください。
+
+## データの持ち方
+
+`lunch` / `dinner` は **「営業する = true」** を表します（ブロックではありません）。
+
+| lunch | dinner | 意味 | 管理画面の表示 |
+| --- | --- | --- | --- |
+| false | false | 終日ブロック | 終日休み（予約不可） |
+| true | false | ランチのみ営業 | ディナーのみ休み |
+| false | true | ディナーのみ営業 | ランチのみ休み |
+
+水・木の定休日、年末年始、および `src/Data/blockedDates.ts` の `BLOCKED_RANGES`
+はコード側のルールです。管理画面では扱いません（期間休業は「期間でまとめて追加」で個別日として登録できます）。

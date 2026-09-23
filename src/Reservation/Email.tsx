@@ -1,11 +1,13 @@
 import { useTranslation } from 'react-i18next';
-import React, { useRef, useState } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import './styles/hover.css';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 
 import { BiLoaderAlt } from 'react-icons/bi'
+import { BlockedDate, BLOCKED_RANGES } from '../Data/blockedDates';
+import { useBlockedDates } from '../lib/useBlockedDates';
 
 const Email: React.FC = () => {
     const { t , i18n} = useTranslation();
@@ -22,87 +24,27 @@ const Email: React.FC = () => {
     const [other, setOther] = useState<string>("")
     const [loading, setLoading] = useState<boolean>(false)
 
-   interface BlockedDate {
-    year: number;
-    month: number;
-    day: number;
-    lunch: boolean;
-    dinner: boolean;
-   }
+    // 予約ブロック日は Supabase から取得（管理画面 /admin で編集）。
+    // 取得できない場合は Data/blockedDates.ts の既定値にフォールバックする。
+    const { blockedDates } = useBlockedDates();
 
-    const blockedDates: BlockedDate[] =[
-      { year: 2025, month: 4, day: 20, lunch: false, dinner: false },
-      { year: 2025, month: 6, day: 14, lunch: false, dinner: false },
-      { year: 2025, month: 7, day: 8, lunch: false, dinner: false }, 
-      { year: 2025, month: 8, day: 24, lunch: false, dinner: false },
-      { year: 2025, month: 9, day: 14, lunch: false, dinner: false }, 
-      { year: 2025, month: 8, day: 15, lunch: false, dinner: false }, 
-      { year: 2025, month: 11, day: 24, lunch: false, dinner: false }, 
-      { year: 2025, month: 11, day: 11, lunch: false, dinner: false }, 
-      { year: 2025, month: 11, day: 29, lunch: false, dinner: false }, 
-       { year: 2025, month: 12, day: 26,lunch: false, dinner: false },
-       { year: 2026, month:1, day: 6,lunch: false, dinner: false }, 
-        { year: 2026, month:2, day: 8, lunch: false, dinner: false }, 
-        { year: 2025, month: 9, day: 12, lunch: true, dinner: false },
-      { year: 2025, month: 9, day: 14, lunch: true, dinner: false },
-      { year: 2025, month: 9, day: 14, lunch: true, dinner: true },
-      { year: 2025, month: 11, day: 23, lunch: true, dinner: false },
-      { year: 2025, month: 11, day: 29, lunch: true, dinner: false },
-      { year: 2025, month: 12, day: 6, lunch: true, dinner: false },
-      { year: 2026, month:2, day: 17, lunch: false, dinner: false }, 
-            { year: 2026, month:2, day: 22, lunch: false, dinner: true }, 
-        { year: 2026, month:2, day: 27, lunch: false, dinner: true }, 
-         { year: 2026, month:3, day: 15, lunch: false, dinner: false }, 
-          { year: 2026, month:3, day: 16, lunch: false, dinner: false }, 
-          { year: 2026, month:3, day: 24, lunch: false, dinner: false }, 
-          { year: 2026, month:4, day: 19, lunch: false, dinner: false }, 
-           { year: 2026, month:5, day: 5, lunch: false, dinner: false }, 
-            { year: 2026, month:5, day: 16, lunch: false, dinner: false }, 
-             { year: 2026, month:5, day: 23, lunch: false, dinner: true },
-             { year: 2026, month:6, day: 5, lunch: true, dinner: false },
-             { year: 2026, month:6, day: 7, lunch: true, dinner: false },
-             { year: 2026, month:6, day: 13, lunch: true, dinner: false },
-             { year: 2026, month:7, day: 10, lunch: false, dinner: false },
-             { year: 2026, month:8, day: 1, lunch: false, dinner: true },
-             { year: 2026, month:8, day: 11, lunch: false, dinner: false },
-             { year: 2026, month:8, day: 18, lunch: false, dinner: false },
-             { year: 2026, month:8, day: 19, lunch: false, dinner: false },
-             { year: 2026, month:8, day: 20, lunch: false, dinner: false },
-             { year: 2026, month:8, day: 21, lunch: false, dinner: false },
-             { year: 2026, month:8, day: 22, lunch: false, dinner: false },
-             { year: 2026, month:8, day: 23, lunch: false, dinner: false },
-             { year: 2026, month:8, day: 24, lunch: false, dinner: false },
-              { year: 2026, month:9, day: 22, lunch: false, dinner: true },
-              { year: 2026, month:9, day: 23, lunch: false, dinner: true },
-              { year: 2026, month:10, day: 4, lunch: false, dinner: true },
-               { year: 2026, month:10, day: 16, lunch: true, dinner: false },
-      ]
+    // lunch / dinner は「営業する = true」。両方 false なら終日ブロック。
+    const { fullyBlockedDates, specialDates } = useMemo(() => {
+      const full: BlockedDate[] = [];
+      const special: BlockedDate[] = [];
+      blockedDates.forEach((date) => {
+        if (!date.lunch && !date.dinner) {
+          full.push(date);
+        } else {
+          special.push(date);
+        }
+      });
+      return { fullyBlockedDates: full, specialDates: special };
+    }, [blockedDates]);
 
-  
-    
-const fullyBlockedDates: BlockedDate[] = [
-  ];
-  
-  // Ranges of days that are off
-  const blockedRanges: { start: Date; end: Date }[] = [
-    {
-      start: new Date(2025, 7, 27), // Aug 27, 2025
-      end: new Date(2025, 8, 6),    // Sep 6, 2025
-    }
-  ];
-  
-  // Dates with only lunch/dinner allowed
-  const specialDates: BlockedDate[] = [
-  ];
+    // 期間でブロックする日程
+    const blockedRanges = BLOCKED_RANGES;
 
-  blockedDates.forEach(date => {
-   if (!date.lunch && !date.dinner) {
-    fullyBlockedDates.push(date);
-   } else {
-    specialDates.push(date);
-   }
-  });
-  
     function matchesDate(date: Date, target: { year: number; month: number; day: number }) {
         return (
           date.getFullYear() === target.year &&
